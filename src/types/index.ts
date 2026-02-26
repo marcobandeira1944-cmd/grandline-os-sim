@@ -78,7 +78,18 @@ export interface SeasonReward {
   premium: boolean;
 }
 
-export type AppId = 'loja' | 'estoque' | 'passe' | 'wallpaper' | 'temas' | 'mestre' | 'creditos';
+export interface CreditPack {
+  id: string;
+  name: string;
+  berries: number;
+  bonus: number;
+  price: string;
+  emoji: string;
+  popular?: boolean;
+  bestValue?: boolean;
+}
+
+export type AppId = 'loja' | 'estoque' | 'passe' | 'wallpaper' | 'temas' | 'mestre' | 'creditos' | 'admin-editor';
 
 export interface WallpaperDef {
   id: string;
