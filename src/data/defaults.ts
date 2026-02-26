@@ -35,7 +35,7 @@ export const MASTER_ACCOUNT: User = {
 };
 
 export const DEFAULT_SETTINGS: Settings = {
-  osName: 'OLD ERA OS',
+  osName: 'OLD AGE OS',
   subtitle: 'v1.0 — Grand Line Edition',
   welcomeMessage: 'Bem-vindo ao Grand Line, Nakama!',
   maintenanceMode: false,
