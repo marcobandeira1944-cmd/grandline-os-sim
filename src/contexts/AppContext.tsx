@@ -1,11 +1,12 @@
 import React, { createContext, useContext, useReducer, useEffect, useCallback, type ReactNode } from 'react';
-import type { User, StoreItem, AppWindow, Settings, AppNotification, Toast, SeasonReward, AppId } from '../types';
-import { DEFAULT_STORE_ITEMS, MASTER_ACCOUNT, DEFAULT_SETTINGS, generateDefaultSeasonRewards, THEMES } from '../data/defaults';
+import type { User, StoreItem, AppWindow, Settings, AppNotification, Toast, SeasonReward, AppId, CreditPack } from '../types';
+import { DEFAULT_STORE_ITEMS, MASTER_ACCOUNT, DEFAULT_SETTINGS, generateDefaultSeasonRewards, THEMES, DEFAULT_CREDIT_PACKS } from '../data/defaults';
 
 interface AppState {
   currentUser: User | null;
   users: User[];
   storeItems: StoreItem[];
+  creditPacks: CreditPack[];
   settings: Settings;
   windows: AppWindow[];
   notifications: AppNotification[];
@@ -47,6 +48,7 @@ type Action =
   | { type: 'TOGGLE_USER_ROLE'; payload: string }
   | { type: 'UPDATE_SETTINGS'; payload: Partial<Settings> }
   | { type: 'UPDATE_SEASON_REWARDS'; payload: SeasonReward[] }
+  | { type: 'UPDATE_CREDIT_PACKS'; payload: CreditPack[] }
   | { type: 'SYNC_CURRENT_USER' };
 
 function loadFromLS<T>(key: string, fallback: T): T {
@@ -81,6 +83,9 @@ function getInitialState(): AppState {
   const seasonRewards = loadFromLS<SeasonReward[]>('oldEra_seasonRewards', generateDefaultSeasonRewards());
   if (!localStorage.getItem('oldEra_seasonRewards')) saveToLS('oldEra_seasonRewards', seasonRewards);
 
+  const creditPacks = loadFromLS<CreditPack[]>('oldEra_creditPacks', DEFAULT_CREDIT_PACKS);
+  if (!localStorage.getItem('oldEra_creditPacks')) saveToLS('oldEra_creditPacks', creditPacks);
+
   const currentUserId = localStorage.getItem('oldEra_currentUser');
   const currentUser = currentUserId ? users.find(u => u.id === JSON.parse(currentUserId)) || null : null;
 
@@ -88,6 +93,7 @@ function getInitialState(): AppState {
     currentUser,
     users,
     storeItems,
+    creditPacks,
     settings,
     windows: [],
     notifications: [],
@@ -106,6 +112,7 @@ const APP_DEFAULTS: Record<string, { width: number; height: number }> = {
   temas: { width: 700, height: 500 },
   mestre: { width: 950, height: 650 },
   creditos: { width: 700, height: 520 },
+  'admin-editor': { width: 900, height: 600 },
 };
 
 function updateUserInList(users: User[], updated: User): User[] {
@@ -357,6 +364,11 @@ function reducer(state: AppState, action: Action): AppState {
     case 'UPDATE_SEASON_REWARDS': {
       saveToLS('oldEra_seasonRewards', action.payload);
       return { ...state, seasonRewards: action.payload };
+    }
+
+    case 'UPDATE_CREDIT_PACKS': {
+      saveToLS('oldEra_creditPacks', action.payload);
+      return { ...state, creditPacks: action.payload };
     }
 
     default:
