@@ -105,6 +105,7 @@ const APP_DEFAULTS: Record<string, { width: number; height: number }> = {
   wallpaper: { width: 750, height: 500 },
   temas: { width: 700, height: 500 },
   mestre: { width: 950, height: 650 },
+  creditos: { width: 700, height: 520 },
 };
 
 function updateUserInList(users: User[], updated: User): User[] {

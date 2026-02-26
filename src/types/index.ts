@@ -78,7 +78,7 @@ export interface SeasonReward {
   premium: boolean;
 }
 
-export type AppId = 'loja' | 'estoque' | 'passe' | 'wallpaper' | 'temas' | 'mestre';
+export type AppId = 'loja' | 'estoque' | 'passe' | 'wallpaper' | 'temas' | 'mestre' | 'creditos';
 
 export interface WallpaperDef {
   id: string;
