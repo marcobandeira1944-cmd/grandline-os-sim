@@ -9,6 +9,7 @@ import SeasonPassApp from './apps/SeasonPassApp';
 import WallpaperApp from './apps/WallpaperApp';
 import ThemesApp from './apps/ThemesApp';
 import MasterPanel from './apps/MasterPanel';
+import CreditsStoreApp from './apps/CreditsStoreApp';
 
 const APP_COMPONENTS: Record<string, React.FC> = {
   loja: StoreApp,
@@ -17,6 +18,7 @@ const APP_COMPONENTS: Record<string, React.FC> = {
   wallpaper: WallpaperApp,
   temas: ThemesApp,
   mestre: MasterPanel,
+  creditos: CreditsStoreApp,
 };
 
 export default function Desktop() {

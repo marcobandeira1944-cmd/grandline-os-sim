@@ -100,4 +100,5 @@ export const APP_DEFINITIONS = [
   { id: 'wallpaper' as const, title: 'Papel de Parede', emoji: '🖼️', gradient: 'linear-gradient(135deg, #1a2a3a, #2d4a6a)', masterOnly: false },
   { id: 'temas' as const, title: 'Temas', emoji: '🎨', gradient: 'linear-gradient(135deg, #2a1a3a, #5a2d8a)', masterOnly: false },
   { id: 'mestre' as const, title: 'Painel Mestre', emoji: '👑', gradient: 'linear-gradient(135deg, #3a2a00, #8a6400)', masterOnly: true },
+  { id: 'creditos' as const, title: 'Loja de Créditos', emoji: '💎', gradient: 'linear-gradient(135deg, #1a2a00, #4a6a00)', masterOnly: false },
 ];
