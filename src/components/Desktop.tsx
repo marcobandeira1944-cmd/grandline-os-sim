@@ -10,6 +10,7 @@ import WallpaperApp from './apps/WallpaperApp';
 import ThemesApp from './apps/ThemesApp';
 import MasterPanel from './apps/MasterPanel';
 import CreditsStoreApp from './apps/CreditsStoreApp';
+import AdminEditorApp from './apps/AdminEditorApp';
 
 const APP_COMPONENTS: Record<string, React.FC> = {
   loja: StoreApp,
@@ -19,6 +20,7 @@ const APP_COMPONENTS: Record<string, React.FC> = {
   temas: ThemesApp,
   mestre: MasterPanel,
   creditos: CreditsStoreApp,
+  'admin-editor': AdminEditorApp,
 };
 
 export default function Desktop() {

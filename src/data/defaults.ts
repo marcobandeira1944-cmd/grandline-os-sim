@@ -1,4 +1,4 @@
-import type { StoreItem, User, Settings, SeasonReward, WallpaperDef, ThemeDef } from '../types';
+import type { StoreItem, User, Settings, SeasonReward, WallpaperDef, ThemeDef, CreditPack } from '../types';
 
 export const DEFAULT_STORE_ITEMS: StoreItem[] = [
   {"id":"1","name":"Espada Wado Ichimonji","category":"Armas","emoji":"⚔️","price":2500,"rarity":"Épico","description":"A espada branca de Kuina, herdada por Zoro. Forjada com aço especial que nunca perde o fio, carrega o peso de dois sonhos em sua lâmina.","stats":{"Ataque":85,"Velocidade":70,"Durabilidade":90}},
@@ -101,4 +101,14 @@ export const APP_DEFINITIONS = [
   { id: 'temas' as const, title: 'Temas', emoji: '🎨', gradient: 'linear-gradient(135deg, #2a1a3a, #5a2d8a)', masterOnly: false },
   { id: 'mestre' as const, title: 'Painel Mestre', emoji: '👑', gradient: 'linear-gradient(135deg, #3a2a00, #8a6400)', masterOnly: true },
   { id: 'creditos' as const, title: 'Loja de Créditos', emoji: '💎', gradient: 'linear-gradient(135deg, #1a2a00, #4a6a00)', masterOnly: false },
+  { id: 'admin-editor' as const, title: 'Editor Admin', emoji: '🔧', gradient: 'linear-gradient(135deg, #2a0a0a, #6a2020)', masterOnly: true },
+];
+
+export const DEFAULT_CREDIT_PACKS: CreditPack[] = [
+  { id: 'pack-1', name: 'Pacote Iniciante', berries: 1000, bonus: 0, price: 'R$ 4,90', emoji: '🪙' },
+  { id: 'pack-2', name: 'Pacote Aventureiro', berries: 3000, bonus: 500, price: 'R$ 12,90', emoji: '💰' },
+  { id: 'pack-3', name: 'Pacote Pirata', berries: 7000, bonus: 1500, price: 'R$ 24,90', emoji: '🏴‍☠️', popular: true },
+  { id: 'pack-4', name: 'Pacote Supernova', berries: 15000, bonus: 5000, price: 'R$ 49,90', emoji: '⭐' },
+  { id: 'pack-5', name: 'Pacote Yonkou', berries: 35000, bonus: 15000, price: 'R$ 99,90', emoji: '👑', bestValue: true },
+  { id: 'pack-6', name: 'Pacote Rei dos Piratas', berries: 80000, bonus: 40000, price: 'R$ 199,90', emoji: '☠️', bestValue: true },
 ];

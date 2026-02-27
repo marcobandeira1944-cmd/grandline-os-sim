@@ -1,25 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../contexts/AppContext';
-
-interface CreditPack {
-  id: string;
-  name: string;
-  berries: number;
-  bonus: number;
-  price: string;
-  emoji: string;
-  popular?: boolean;
-  bestValue?: boolean;
-}
-
-const CREDIT_PACKS: CreditPack[] = [
-  { id: 'pack-1', name: 'Pacote Iniciante', berries: 1000, bonus: 0, price: 'R$ 4,90', emoji: '🪙' },
-  { id: 'pack-2', name: 'Pacote Aventureiro', berries: 3000, bonus: 500, price: 'R$ 12,90', emoji: '💰' },
-  { id: 'pack-3', name: 'Pacote Pirata', berries: 7000, bonus: 1500, price: 'R$ 24,90', emoji: '🏴‍☠️', popular: true },
-  { id: 'pack-4', name: 'Pacote Supernova', berries: 15000, bonus: 5000, price: 'R$ 49,90', emoji: '⭐' },
-  { id: 'pack-5', name: 'Pacote Yonkou', berries: 35000, bonus: 15000, price: 'R$ 99,90', emoji: '👑', bestValue: true },
-  { id: 'pack-6', name: 'Pacote Rei dos Piratas', berries: 80000, bonus: 40000, price: 'R$ 199,90', emoji: '☠️', bestValue: true },
-];
+import type { CreditPack } from '../../types';
 
 export default function CreditsStoreApp() {
   const { state, addToast } = useApp();
@@ -33,7 +14,6 @@ export default function CreditsStoreApp() {
 
   const confirmPurchase = () => {
     if (!selectedPack) return;
-    // Placeholder — futuramente será um link de pagamento real
     addToast('info', `🔗 Link de pagamento para ${selectedPack.name} será implementado em breve!`);
     setSelectedPack(null);
   };
@@ -59,7 +39,7 @@ export default function CreditsStoreApp() {
       {/* Packs Grid */}
       <div className="flex-1 overflow-y-auto p-4">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
-          {CREDIT_PACKS.map(pack => (
+          {state.creditPacks.map(pack => (
             <div key={pack.id}
               className="relative rounded-2xl overflow-hidden cursor-pointer group transition-all duration-200 hover:scale-[1.02]"
               style={{
@@ -69,7 +49,6 @@ export default function CreditsStoreApp() {
               }}
               onClick={() => handlePurchase(pack)}>
               
-              {/* Badge */}
               {pack.popular && (
                 <div className="absolute top-0 right-0 px-2 py-0.5 text-[9px] font-bold uppercase rounded-bl-lg gold-gradient text-[#080b14]">
                   Popular
@@ -82,7 +61,6 @@ export default function CreditsStoreApp() {
                 </div>
               )}
 
-              {/* Emoji Section */}
               <div className="h-20 flex items-center justify-center"
                 style={{
                   background: pack.popular
@@ -97,7 +75,6 @@ export default function CreditsStoreApp() {
                 </span>
               </div>
 
-              {/* Info */}
               <div className="p-3">
                 <h3 className="text-xs font-semibold text-white">{pack.name}</h3>
                 <div className="flex items-baseline gap-1 mt-1">
@@ -122,7 +99,6 @@ export default function CreditsStoreApp() {
           ))}
         </div>
 
-        {/* Info Section */}
         <div className="mt-4 p-3 rounded-xl" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.05)' }}>
           <p className="text-[10px] text-[#64748b] flex items-center gap-1.5">
             ℹ️ Os pagamentos serão processados por um link externo. Após a confirmação, os Berries serão creditados automaticamente na sua conta.
